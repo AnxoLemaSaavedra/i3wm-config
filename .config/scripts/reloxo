@@ -1,0 +1,20 @@
+#!/bin/bash
+
+HORAFMT=${HORAFMT:-"+%H:%M:%S"}
+HORALABEL=${HORALABLE:-}
+
+# rosa clasico
+color=#fbcce7
+# cotton candy
+datacor=#ffbcd9
+# Orquidea escuro
+horacor=#9932cc
+horacor=#966fd6
+# salmon escuro
+horacor=#e9967a
+# rosa fucsia
+horacor=#ff77ff
+echo "<span color=\"${horacor}\">${HORALABEL}</span> $(LANG=gl_ES.UTF-8 date "$HORAFMT") "
+echo "<span color=\"${horacor}\">${HORALABEL}</span>$(LANG=gl_ES.UTF-8 date "$HORAFMT") "
+
+

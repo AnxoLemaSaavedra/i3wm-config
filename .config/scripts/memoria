@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# Codigo de cores
+# Vermelho #FF0000
+# Laranja  #FFA500
+# Amarelo  #FFFF00
+# Verde    #00FF00
+
+used=$(free | sed -n "2p" | tr -s " " | cut -d" " -f3)
+total=$(free | sed -n "2p" | tr -s " " | cut -d" " -f2)
+avail=$(free | sed -n "2p" | tr -s " " | cut -d" " -f7)
+free=$(free | sed -n "2p" | tr -s " " | cut -d" " -f4)
+
+usedk=$(($used/1024))
+usedg=$(($usedk/1024))
+
+totalk=$(($total/1024))
+totalg=$(($totalk/1024))
+
+availk=$(($avail/1024))
+availg=$(($availk/1024))
+
+porcentaxe=$((100*$used/$avail))
+if [ $porcentaxe -gt 90 ]
+then
+    # Vermelho
+    color="#FF0000"
+
+elif [ $porcentaxe -gt 80 ]
+then
+    # Laranja
+    color="#FFA500"
+
+elif [ $porcentaxe -gt 70 ]
+then
+    # Amarelo
+    color="#FFFF00"
+
+else
+    # Verde
+    color="#00FF00"
+fi
+
+
+if [ $usedg -gt 0 ]
+then
+    longstring="${usedg}.${usedk: -3:1}GiB|${availg}.${availk: -3:1}GiB"
+    shorstring="${usedg}.${usedk: -3:1}GiB"
+else
+    longstring="${usedk}MiB|${availg}.${availk: -3:1}GiB"
+    shorstring="${usedk}MiB"
+fi
+
+if [ $color != "#FF0000" ]
+then
+    echo "<span color=\"${color}\">${LABEL}</span>${longstring}"
+    #echo "<span color=\"${color}\">${LABEL}</span>${shortstring}"
+    echo "<span color=\"${color}\">${LABEL}</span>"
+else
+    echo "${LABEL}${longstring}"
+    #echo "${LABEL}${shortstring}"
+    echo "${LABEL}"
+    echo $color
+fi

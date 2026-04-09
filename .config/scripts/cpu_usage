@@ -1,0 +1,42 @@
+#!/bin/bash
+
+#cputemp=$(sensors | grep -A2 acpitz-acpi-0 | tail -n1 | tr -s " " | cut -d" " -f2)
+#cputemp=${cputemp:1}
+#cputempint=${cputemp:0:-4}
+cputemp=$(cat /proc/acpi/ibm/thermal | awk '{print $2}')
+
+#cpuidle=$(mpstat | tail -n1 | tr -s " " | cut -d " " -f 12 | tr "," ".")
+
+if [ $cputemp -ge 80 ]
+then
+    # Vermelho
+    color="#FF0000"
+    tempstring="<span color=\"${color}\"> ${cputemp}°C</span>"
+    shorttempstring="<span color=\"${color}\"></span>"
+
+elif [ $cputemp -ge 70 ]
+then
+    # Laranja
+    color="#FFA500"
+    tempstring="<span color=\"${color}\"> ${cputemp}°C</span>"
+    shorttempstring="<span color=\"${color}\"></span>"
+
+elif [ $cputemp -ge 50 ]
+then
+    # Amarelo
+    color="#FFFF00"
+    tempstring="<span color=\"${color}\"></span> ${cputemp}°C"
+    shorttempstring="<span color=\"${color}\"></span>"
+
+else
+    # Azul
+    color="#0000FF"
+    # Azul Columbia
+    color="#9BDDFF"
+    tempstring="<span color=\"${color}\"> </span>${cputemp}°C"
+    shorttempstring="<span color=\"${color}\"></span>"
+fi
+
+echo "${tempstring}"
+echo "${shorttempstring}"
+

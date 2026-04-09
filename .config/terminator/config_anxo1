@@ -1,0 +1,25 @@
+[global_config]
+  clear_select_on_copy = True
+[keybindings]
+[profiles]
+  [[default]]
+    background_color = "#23011e"
+    font = Ubuntu Mono 20
+    foreground_color = "#ffffff"
+    show_titlebar = False
+    scrollbar_position = hidden
+    palette = "#2e3436:#cc0000:#4e9a06:#c4a000:#3465a4:#613583:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
+    login_shell = True
+    use_system_font = False
+    bold_is_bright = True
+    copy_on_selection = True
+    title_font = Ubuntu Mono 16
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]
