@@ -102,13 +102,13 @@ else:
             fulltext = FE_BATTERY + " "
 
     elif state == "Full":
-        icon = FA_PLUG + " "
+        fulltext = FA_PLUG + " "
         timeleft = ""
     elif state == "Unknown":
-        icon = FA_QUESTION + " " + FA_BATTERY + " "
+        fulltext = FA_QUESTION + " " + FA_BATTERY + " "
         timeleft = ""
     else:
-        icon = FA_LIGHTNING + " " + FA_PLUG + " "
+        fulltext = FA_LIGHTNING + " " + FA_PLUG + " "
 
     def color(percent):
         if percent < 10:
