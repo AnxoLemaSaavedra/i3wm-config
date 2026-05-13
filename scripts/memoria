@@ -11,14 +11,14 @@ total=$(free | sed -n "2p" | tr -s " " | cut -d" " -f2)
 avail=$(free | sed -n "2p" | tr -s " " | cut -d" " -f7)
 free=$(free | sed -n "2p" | tr -s " " | cut -d" " -f4)
 
-usedk=$(($used/1024))
-usedg=$(($usedk/1024))
+usedm=$(($used/1024))
+usedg=$(($usedm/1024))
 
-totalk=$(($total/1024))
-totalg=$(($totalk/1024))
+totalm=$(($total/1024))
+totalg=$(($totalm/1024))
 
-availk=$(($avail/1024))
-availg=$(($availk/1024))
+availm=$(($avail/1024))
+availg=$(($availm/1024))
 
 porcentaxe=$((100*$used/$avail))
 if [ $porcentaxe -gt 90 ]
@@ -44,11 +44,11 @@ fi
 
 if [ $usedg -gt 0 ]
 then
-    longstring="${usedg}.${usedk: -3:1}GiB|${availg}.${availk: -3:1}GiB"
-    shorstring="${usedg}.${usedk: -3:1}GiB"
+    longstring="${usedg}.${usedm: -3:1}GiB|${totalg}.${totalm: -3:1}GiB"
+    shorstring="${usedg}.${usedm: -3:1}GiB"
 else
-    longstring="${usedk}MiB|${availg}.${availk: -3:1}GiB"
-    shorstring="${usedk}MiB"
+    longstring="${usedm}MiB|${totalg}.${totalm: -3:1}GiB"
+    shorstring="${usedm}MiB"
 fi
 
 if [ $color != "#FF0000" ]
