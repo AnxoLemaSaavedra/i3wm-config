@@ -55,8 +55,10 @@ else:
     left_capacity = sum(left_capacities)
     percentleft = int(left_capacity / total_capacity * 100)
 
-    timeleft = left_capacity * time_per_mah
-    timeleft = f"{int(timeleft/60)}:{int(timeleft%60):02d}"
+    try:
+        timeleft = left_capacity * time_per_mah
+        timeleft = f"{int(timeleft/60)}:{int(timeleft%60):02d}"
+    except: timeleft = ""
 
     
     # stands for charging
