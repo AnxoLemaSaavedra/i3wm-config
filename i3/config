@@ -274,8 +274,6 @@ default_floating_border pixel 5
 #hide_edge_borders both
 
 # Display Wallpaper
-#exec_always feh --bg-fill /home/anxo/.config/i3/arch_verdoso.jpg
-#exec_always feh --bg-fill /home/anxo/.config/i3/arch_violeta_montanhas.jpg
 exec_always feh --bg-fill /home/anxo/.config/i3/solpor.jpg
 
 # Transparencia co compositor picom
